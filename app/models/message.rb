@@ -41,7 +41,7 @@ class Message
     if user.need_update_temperature?
       WeatherRequestJob.perform_later(user.facebook_id, true)
     else
-      user.weather_message!(nil, nil) # it's bad idia
+      user.weather_message!(nil, nil) # it's bad idea
     end
   end
 

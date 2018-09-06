@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 namespace :config_chatbot do
-  desc 'Setup chatbot menu'
+  desc 'Setup chatbot get started & menu'
   task get_started: :environment do
     HTTParty.post(
       "#{ENV['FB_API_PATH']}me/messenger_profile",
@@ -11,18 +11,7 @@ namespace :config_chatbot do
       body: {
         get_started: {
           payload: 'get_started'
-        }
-      }.to_json,
-      headers: { 'Content-Type' => 'application/json' }
-    )
-  end
-  task get_started: :environment do
-    HTTParty.post(
-      "#{ENV['FB_API_PATH']}me/messenger_profile",
-      query: {
-        access_token: ENV['FACEBOOK_MARKER_TESTIAMPOPUP_MESSENGER']
-      },
-      body: {
+        },
         persistent_menu: [
           {
             locale: 'default',
